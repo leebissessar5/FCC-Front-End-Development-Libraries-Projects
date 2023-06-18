@@ -30,11 +30,37 @@ const expressionSlice = createSlice({
                 return state
             }
 
+            if (isOperator && toPush === '-') {
+                // Check if the minus sign is used as a negative sign for a number
+                const isNegation =
+                    !state.reset &&
+                    !state.decimalUsed &&
+                    state.result === '0' &&
+                    state.expression.slice(-1) !== '-'
+
+                const updatedExpression = isNegation
+                    ? state.expression + toPush
+                    : state.expression.length > 0 &&
+                      ['+', '-', '*', '/'].includes(state.expression.slice(-1))
+                    ? state.expression + toPush
+                    : state.expression + ' ' + toPush // Add a space before the minus sign
+
+                return {
+                    ...state,
+                    expression: updatedExpression,
+                    result: toPush,
+                    decimalUsed: false,
+                    reset: false,
+                }
+            }
+
             if (isOperator) {
                 const updatedExpression =
                     state.expression.length > 0 &&
                     ['+', '-', '*', '/'].includes(state.expression.slice(-1))
-                        ? state.expression.slice(0, -1) + toPush
+                        ? state.expression.slice(-1) === '-'
+                            ? state.expression.slice(0, -2) + toPush
+                            : state.expression.slice(0, -1) + toPush
                         : state.expression + toPush
 
                 return {

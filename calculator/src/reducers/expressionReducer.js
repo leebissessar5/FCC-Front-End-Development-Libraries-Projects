@@ -46,7 +46,6 @@ const expressionSlice = createSlice({
                     : state.expression + ' ' + toPush // Add a space before the minus sign
 
                 return {
-                    ...state,
                     expression: updatedExpression,
                     result: toPush,
                     decimalUsed: false,
@@ -64,8 +63,9 @@ const expressionSlice = createSlice({
                         : state.expression + toPush
 
                 return {
-                    ...state,
-                    expression: updatedExpression,
+                    expression: state.reset
+                        ? state.result.toString() + toPush
+                        : updatedExpression,
                     result: toPush,
                     decimalUsed: false,
                     reset: false,
@@ -73,7 +73,6 @@ const expressionSlice = createSlice({
             }
 
             return {
-                ...state,
                 expression: state.reset ? toPush : state.expression + toPush,
                 result: state.reset
                     ? toPush
@@ -88,7 +87,6 @@ const expressionSlice = createSlice({
         },
         clearExpression(state) {
             return {
-                ...state,
                 expression: '',
                 result: '0',
                 decimalUsed: false,
@@ -101,7 +99,6 @@ const expressionSlice = createSlice({
                 Math.round(evaluateExpression(expression) * 10000) / 10000
 
             return {
-                ...state,
                 expression: `${state.expression}=${result}`,
                 result,
                 decimalUsed: false,

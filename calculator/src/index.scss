@@ -1,85 +1,85 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 
 @font-face {
-  font-family: 'DSEG';
-  src: url('./fonts/DSEG14Modern-Regular.ttf') format('truetype');
+    font-family: 'DSEG';
+    src: url('./fonts/DSEG14Modern-Regular.ttf') format('truetype');
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* Adjust the height as needed */
-  font-family: 'HP Simplified Light', sans-serif;
-
-  .footer {
-    text-align: center;
-    padding: 10px;
-  }
-
-  .calculator {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .display {
-    margin-bottom: 10px;
-    padding: 10px;
-    text-align: right;
-    font-size: 24px;
-    color: blue; /* Light blue text color for top display */
-    font-family: 'DSEG', sans-serif; /* Apply the DSEG font */
-    height: 36px; /* Fixed height for the displays */
-  }
-
-  .display + .display {
-    color: green; /* Green text color for bottom display */
-    padding-top: 0px;
-    font-size: 36px;
-    height: 48px; /* Fixed height for the displays */
-  }
-
-  .buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-  }
-
-  button {
-    padding: 10px;
-    font-size: 18px;
-    border: black solid 1px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-    color: #000; /* Black button color */
-    font-family: 'HP Simplified', sans-serif;
-  }
-
-  button.operator {
-    background-color: #808080; /* Grey background for operators */
-    color: #fff; /* White text color for operators */
-  }
-
-  button.red {
-    background-color: #ff0000; /* Red background for AC */
-    color: #fff; /* White text color for AC */
-  }
-
-  button.equal {
-    background-color: #97c97e;
-    color: white;
-  }
-
-  .row {
     display: flex;
-    justify-content: space-between;
-  }
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust the height as needed */
+    font-family: 'HP Simplified Light', sans-serif;
 
-  button:hover {
-    background-color: #ddd;
-  }
+    .footer {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .calculator {
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .display {
+        margin-bottom: 10px;
+        padding: 10px;
+        text-align: right;
+        font-size: 24px;
+        color: blue; /* Light blue text color for top display */
+        font-family: 'DSEG', sans-serif; /* Apply the DSEG font */
+        height: 36px; /* Fixed height for the displays */
+    }
+
+    .display + .display {
+        color: green; /* Green text color for bottom display */
+        padding-top: 0px;
+        font-size: 36px;
+        height: 48px; /* Fixed height for the displays */
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 18px;
+        border: black solid 1px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        color: #000; /* Black button color */
+        font-family: 'HP Simplified', sans-serif;
+    }
+
+    button.operator {
+        background-color: #808080; /* Grey background for operators */
+        color: #fff; /* White text color for operators */
+    }
+
+    button.red {
+        background-color: #ff0000; /* Red background for AC */
+        color: #fff; /* White text color for AC */
+    }
+
+    button.equal {
+        background-color: #97c97e;
+        color: white;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    button:hover {
+        background-color: #ddd;
+    }
 }

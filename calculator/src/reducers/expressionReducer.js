@@ -1,89 +1,90 @@
+/* eslint-disable no-eval */
 import { createSlice } from '@reduxjs/toolkit'
 
+function evaluateExpression(expression) {
+    try {
+        // Use the built-in JavaScript eval function to evaluate the expression
+        const result = eval(expression)
+        return String(result)
+    } catch (error) {
+        console.error('Error evaluating expression:', error)
+        return ''
+    }
+}
+
 const expressionSlice = createSlice({
-  name: 'expression',
-  initialState: {
-    op1: '',
-    op2: '0',
-    operator: '',
-    decimalUsed: false,
-  },
-  reducers: {
-    updateOperand(state, action) {
-      const operand = action.payload.toString()
-
-      const decimalFound = operand === '.'
-
-      if (state.decimalUsed && decimalFound) {
-        return state
-      }
-
-      if (state.operator.length !== 0) {
-        const op1 = state.op1 === '0' ? operand : state.op1 + operand
-        return {
-          ...state,
-          decimalUsed: state.decimalUsed || decimalFound,
-          op1,
-        }
-      } else {
-        const op2 = state.op2 === '0' ? operand : state.op2 + operand
-        return {
-          ...state,
-          decimalUsed: state.decimalUsed || decimalFound,
-          op1: '',
-          op2,
-        }
-      }
-    },
-    updateOperator(state, action) {
-      const operator = action.payload.toString()
-      return {
-        ...state,
-        operator,
+    name: 'expression',
+    initialState: {
+        expression: '',
+        result: '0',
         decimalUsed: false,
-      }
+        reset: true,
     },
-    clear(state) {
-      return {
-        op1: '',
-        op2: '0',
-        operator: '',
-        decimalUsed: false,
-      }
+    reducers: {
+        updateExpression(state, action) {
+            const toPush = action.payload.toString()
+            const isOperator = ['+', '-', '*', '/'].includes(toPush)
+            const decimalFound = toPush === '.'
+
+            if (state.decimalUsed && decimalFound) {
+                return state
+            }
+
+            if (isOperator) {
+                const updatedExpression =
+                    state.expression.length > 0 &&
+                    ['+', '-', '*', '/'].includes(state.expression.slice(-1))
+                        ? state.expression.slice(0, -1) + toPush
+                        : state.expression + toPush
+
+                return {
+                    ...state,
+                    expression: updatedExpression,
+                    result: toPush,
+                    decimalUsed: false,
+                    reset: false,
+                }
+            }
+
+            return {
+                ...state,
+                expression: state.reset ? toPush : state.expression + toPush,
+                result: state.reset
+                    ? toPush
+                    : isOperator
+                    ? toPush
+                    : state.result !== '0'
+                    ? state.result + toPush
+                    : toPush,
+                decimalUsed: !isOperator && (state.decimalUsed || decimalFound),
+                reset: false,
+            }
+        },
+        clearExpression(state) {
+            return {
+                ...state,
+                expression: '',
+                result: '0',
+                decimalUsed: false,
+                reset: true,
+            }
+        },
+        calculate(state) {
+            const { expression } = state
+            const result =
+                Math.round(evaluateExpression(expression) * 10000) / 10000
+
+            return {
+                ...state,
+                expression: `${state.expression}=${result}`,
+                result,
+                decimalUsed: false,
+                reset: true,
+            }
+        },
     },
-    calculate(state) {
-      const { op1, op2, operator } = state
-      if (op1 && op2 && operator) {
-        let result
-        switch (operator) {
-          case '+':
-            result = op1 + op2
-            break
-          case '-':
-            result = op2 - op1
-            break
-          case '*':
-            result = op1 * op2
-            break
-          case '/':
-            result = op2 / op1
-            break
-          default:
-            result = op2
-        }
-        return {
-          ...state,
-          op1: result,
-          op2: '',
-          operator: '',
-          decimalUsed: false,
-        }
-      }
-      return state
-    },
-  },
 })
 
-export const { updateOperand, updateOperator, clear, calculate } =
-  expressionSlice.actions
+export const { updateExpression, clearExpression, calculate } =
+    expressionSlice.actions
 export default expressionSlice.reducer

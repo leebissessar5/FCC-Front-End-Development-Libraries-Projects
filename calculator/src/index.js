@@ -10,13 +10,13 @@ import expressionReducer from './reducers/expressionReducer'
 import App from './App'
 
 const store = configureStore({
-  reducer: {
-    expression: expressionReducer,
-  },
+    reducer: {
+        expression: expressionReducer,
+    },
 })
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+    <Provider store={store}>
+        <App />
+    </Provider>
 )

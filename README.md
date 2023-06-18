@@ -6,4 +6,4 @@ Later, you'll build a shopping cart and other applications to learn how to creat
 
 ## Certification Projects
 
-### #4: [Build a JavaScript Calculator](./calculator)
+### #4: [Build a JavaScript Calculator](./calculator) - Deployed on [Render](https://calculator-87yl.onrender.com/).

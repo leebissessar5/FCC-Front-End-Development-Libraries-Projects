@@ -6,7 +6,7 @@ const baseUrl = 'https://api.quotable.io/random'
 
 const Footer = () => (
     <div className="footer">
-        Created by Lee Bissessar
+        Random Quote Machine App created by Lee Bissessar
         <p>Built using React, Bootstrap, and Sass</p>
     </div>
 )
@@ -52,7 +52,7 @@ const App = () => {
                             </button>
                             <a
                                 id="tweet-quote"
-                                className="btn btn-primary"
+                                className="btn btn-primary tweet-quote-container"
                                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                                     `${quote.content} - ${quote.author}`
                                 )}`}

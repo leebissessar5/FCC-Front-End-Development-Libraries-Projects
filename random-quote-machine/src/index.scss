@@ -11,15 +11,42 @@ $primary-color: #6c63ff;
     font-family: 'HP Simplified Light', sans-serif;
 
     .quote-container {
-        background-color: white;
-        border-radius: 10px;
-        border: 2px solid $primary-color;
+        position: relative;
         padding: 20px;
-        width: 40%;
+        width: 50%;
+        color: white;
+        height: fit-content; /* Use fit-content to adjust height based on content */
+        max-height: 80vh; /* Set a maximum height to limit the expansion */
+    }
+
+    .quote-container::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        z-index: -1;
+        background: linear-gradient(
+            45deg,
+            red,
+            orange,
+            yellow,
+            green,
+            blue,
+            indigo,
+            violet,
+            red
+        );
+        background-size: 400% 400%;
+        border-radius: 20px;
+        animation: borderAnimation 10s linear infinite;
     }
 
     .footer {
         padding: 10px;
+        margin-top: 20px;
+        text-align: center;
     }
 
     #text {
@@ -35,10 +62,29 @@ $primary-color: #6c63ff;
 
     button {
         margin-bottom: 20px;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+    }
+
+    .tweet-quote-container {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border-color: white;
     }
 
     .twitter-icon {
         font-size: 20px;
         margin-left: 10px;
+    }
+
+    @keyframes borderAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
     }
 }

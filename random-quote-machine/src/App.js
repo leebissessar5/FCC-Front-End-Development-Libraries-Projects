@@ -33,38 +33,43 @@ const App = () => {
     }
 
     return (
-        <div id="quote-box">
-            {quote && (
-                <div className="quote-container">
-                    <div id="text">{quote.content}</div>
-                    <div id="author">- {quote.author}</div>
-                    <div className="d-flex justify-content-between">
-                        <button
-                            id="new-quote"
-                            className="btn btn-primary"
-                            onClick={handleNewQuote}
-                        >
-                            New Quote
-                        </button>
-                        <a
-                            id="tweet-quote"
-                            className="btn btn-primary"
-                            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                                `${quote.content} - ${quote.author}`
-                            )}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Tweet Quote
-                            <FontAwesomeIcon
-                                className="twitter-icon"
-                                icon={faTwitter}
-                            />
-                        </a>
+        <div className="container">
+            <div
+                id="quote-box"
+                className="d-flex flex-column align-items-center"
+            >
+                {quote && (
+                    <div className="quote-container">
+                        <div id="text">{quote.content}</div>
+                        <div id="author">- {quote.author}</div>
+                        <div className="d-flex justify-content-between">
+                            <button
+                                id="new-quote"
+                                className="btn btn-primary"
+                                onClick={handleNewQuote}
+                            >
+                                New Quote
+                            </button>
+                            <a
+                                id="tweet-quote"
+                                className="btn btn-primary"
+                                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                                    `${quote.content} - ${quote.author}`
+                                )}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Tweet Quote
+                                <FontAwesomeIcon
+                                    className="twitter-icon"
+                                    icon={faTwitter}
+                                />
+                            </a>
+                        </div>
                     </div>
-                </div>
-            )}
-            <Footer />
+                )}
+                <Footer />
+            </div>
         </div>
     )
 }

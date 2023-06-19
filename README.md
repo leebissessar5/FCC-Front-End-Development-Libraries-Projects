@@ -6,4 +6,6 @@ Later, you'll build a shopping cart and other applications to learn how to creat
 
 ## Certification Projects
 
+### #1: [Build a Random Quote Machine](./random-quote-machine)
+
 ### #4: [Build a JavaScript Calculator](./calculator) - Deployed on [Render](https://calculator-87yl.onrender.com/).

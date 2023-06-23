@@ -57,10 +57,27 @@ html {
     border: 1px solid $border-color;
     border-radius: 0.25rem;
     padding: 1rem;
+    background-color: white;
+    font-size: 14px;
 }
 
 .footer {
     text-align: center;
     font-size: 14px;
     color: $secondary-color;
+}
+
+.card-body {
+    background-color: darkturquoise;
+    font-size: 24px;
+    border-radius: 6px;
+}
+
+.form-label {
+    color: white;
+    font-weight: bold;
+}
+
+.form-control {
+    background-color: white;
 }

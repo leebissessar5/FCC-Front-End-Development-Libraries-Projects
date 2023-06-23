@@ -42,7 +42,7 @@ const App = () => {
     return (
         <Container>
             <Row>
-                <Col md={6} lg={5}>
+                <Col md={6} lg={4}>
                     <Card>
                         <Card.Body>
                             <Form>
@@ -57,7 +57,7 @@ const App = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col md={6} lg={7}>
+                <Col md={6} lg={8}>
                     <Card>
                         <Card.Body>
                             <Form.Label htmlFor="preview">Previewer</Form.Label>

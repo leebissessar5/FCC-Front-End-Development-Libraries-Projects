@@ -8,4 +8,6 @@ Later, you'll build a shopping cart and other applications to learn how to creat
 
 ### #1: [Build a Random Quote Machine](./random-quote-machine) - Deployed on [Render](https://random-quote-machine-4ihq.onrender.com).
 
+### #2: [Build a Markdown Previewer](./markdown-previewer/)
+
 ### #4: [Build a JavaScript Calculator](./calculator) - Deployed on [Render](https://calculator-87yl.onrender.com/).

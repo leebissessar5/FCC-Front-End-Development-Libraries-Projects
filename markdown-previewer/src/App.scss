@@ -18,13 +18,13 @@ html {
 }
 
 .container {
-    max-width: 100%; /* Set the maximum width of the container to fill the available space */
-    height: 100%; /* Fill the available height */
+    max-width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 10px; /* Add some padding to the left side */
-    padding-right: 10px; /* Add some padding to the right side */
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .text-center {
@@ -38,6 +38,7 @@ html {
 #editor {
     font-family: 'Courier New', monospace;
     height: 400px;
+    min-height: 100px;
     resize: vertical;
     border: 1px solid $border-color;
     border-radius: 0.25rem;
@@ -47,6 +48,7 @@ html {
         border-color: $primary-color;
         box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
     }
+    resize: none;
 }
 
 #preview {

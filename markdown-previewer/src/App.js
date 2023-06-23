@@ -5,7 +5,7 @@ import './App.scss'
 
 const Footer = () => (
     <div className="footer">
-        Markdown Previewer App created by ???
+        Markdown Previewer App created by Lee Bissessar
         <p>Built using React, Bootstrap, and Sass</p>
     </div>
 )

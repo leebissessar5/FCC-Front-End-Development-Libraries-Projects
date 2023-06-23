@@ -1,12 +1,61 @@
 @import '~bootstrap/scss/bootstrap';
 
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$border-color: #ced4da;
+
+body,
+html {
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.container {
+    max-width: 800px; /* Set the maximum width of the container */
+    height: 100%; /* Fill the available height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-center {
+    margin-bottom: 2rem;
+}
+
+.card {
+    margin-bottom: 2rem;
+}
+
 #editor {
-  height: 400px;
+    font-family: 'Courier New', monospace;
+    height: 400px;
+    resize: vertical;
+    border: 1px solid $border-color;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    outline: none;
+    &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+    }
 }
 
 #preview {
-  height: 400px;
-  overflow-y: scroll;
-  border: 1px solid #ced4da;
-  padding: 10px;
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid $border-color;
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: $secondary-color;
 }

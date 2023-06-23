@@ -3,27 +3,35 @@ import { Container, Row, Col, Form, FormControl, Card } from 'react-bootstrap'
 import Markdown from 'marked-react'
 import './App.scss'
 
+const Footer = () => (
+    <div className="footer">
+        Markdown Previewer App created by ???
+        <p>Built using React, Bootstrap, and Sass</p>
+    </div>
+)
+
 const App = () => {
     const [markdown, setMarkdown] = useState('')
 
     useEffect(() => {
         // Set default markdown content
-        const defaultMarkdown = `
-      # Heading 1
-      ## Heading 2
-      [Link](https://www.example.com)
-      \`inline code\`
-      \`\`\`
-      // Code block
-      function greet() {
-        console.log('Hello!');
-      }
-      \`\`\`
-      - List item
-      > Blockquote
-      ![Image](https://via.placeholder.com/150)
-      **Bold text**
-    `
+        const defaultMarkdown =
+            // eslint-disable-next-line no-multi-str
+            "# Heading 1 \
+        \n\n## Heading 2 \
+      \n\n[Link](https://www.example.com) \
+      \n`inline code` \
+      \n\n ``` \
+      \n\n// Code block \
+      \n\nfunction greet() { \
+      \n\n  console.log('Hello!'); \
+      \n\n} \
+      \n\n``` \
+      \n\n- List item \
+      \n\n> Blockquote \
+      \n\n![Image](https://via.placeholder.com/150) \
+      \n\n**Bold text**"
+
         setMarkdown(defaultMarkdown)
     }, [])
 
@@ -31,20 +39,14 @@ const App = () => {
         setMarkdown(event.target.value)
     }
 
-    console.log(markdown)
-
     return (
         <Container>
-            <Row>
-                <Col>
-                    <h1 className="text-center">Markdown Previewer</h1>
-                </Col>
-            </Row>
             <Row>
                 <Col md={6}>
                     <Card>
                         <Card.Body>
                             <Form>
+                                <Form.Label htmlFor="editor">Editor</Form.Label>
                                 <FormControl
                                     as="textarea"
                                     id="editor"
@@ -58,13 +60,15 @@ const App = () => {
                 <Col md={6}>
                     <Card>
                         <Card.Body>
+                            <Form.Label htmlFor="preview">Previewer</Form.Label>
                             <div id="preview">
-                                <Markdown value={markdown} />
+                                <Markdown value={markdown} breaks={true} />
                             </div>
                         </Card.Body>
                     </Card>
                 </Col>
             </Row>
+            <Footer />
         </Container>
     )
 }

@@ -1,0 +1,12 @@
+@import '~bootstrap/scss/bootstrap';
+
+#editor {
+  height: 400px;
+}
+
+#preview {
+  height: 400px;
+  overflow-y: scroll;
+  border: 1px solid #ced4da;
+  padding: 10px;
+}

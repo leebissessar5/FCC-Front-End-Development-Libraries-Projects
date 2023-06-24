@@ -18,9 +18,10 @@ body {
 }
 
 .container {
-    width: 400px;
-    padding: 20px;
-    border: 1px solid #ffffff;
+    width: 500px;
+    height: auto;
+    padding: 40px;
+    border: 2px solid #00ff66;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -34,8 +35,8 @@ body {
 }
 
 .drum-pad {
-    padding: 20px;
-    width: 6rem;
+    padding: 25px;
+    width: 8rem;
     text-align: center;
     cursor: pointer;
     background-color: #3d3d3d;

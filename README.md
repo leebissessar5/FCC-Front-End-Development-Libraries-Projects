@@ -10,4 +10,6 @@ Later, you'll build a shopping cart and other applications to learn how to creat
 
 ### #2: [Build a Markdown Previewer](./markdown-previewer/) - Deployed on [Render](https://markdown-previewer-d06l.onrender.com).
 
+### #3: [Build a Drum Machine](./drum-machine/)
+
 ### #4: [Build a JavaScript Calculator](./calculator) - Deployed on [Render](https://calculator-87yl.onrender.com/).

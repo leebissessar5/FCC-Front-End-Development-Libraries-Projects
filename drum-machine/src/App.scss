@@ -1,0 +1,25 @@
+@import '~bootstrap/scss/bootstrap';
+
+.drum-pad-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.drum-pad {
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#display {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+footer {
+    @extend .bg-light;
+    padding: 20px;
+    margin-top: 20px;
+}

@@ -12,6 +12,7 @@ import audio8 from './Audio/RP4_KICK_1.mp3'
 import audio9 from './Audio/Cev_H2.mp3'
 
 import DrumPad from './Components/DrumPad'
+import Footer from './Components/Footer'
 
 const App = () => {
     const [display, setDisplay] = useState('')
@@ -89,7 +90,6 @@ const App = () => {
 
     return (
         <div id="drum-machine" className="container">
-            <h1>Drum Machine</h1>
             <div id="display" className="text-center mb-4">
                 {display}
             </div>
@@ -108,7 +108,7 @@ const App = () => {
                     </div>
                 </div>
             </div>
-            <footer className="text-center mt-4">This is the footer.</footer>
+            <Footer />
         </div>
     )
 }

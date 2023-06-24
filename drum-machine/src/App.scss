@@ -1,25 +1,56 @@
 @import '~bootstrap/scss/bootstrap';
 
+#root,
+html {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .drum-pad-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
+    justify-content: center;
 }
 
 .drum-pad {
     padding: 20px;
+    width: 6rem;
     text-align: center;
     cursor: pointer;
+    background-color: #3d3d3d;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.drum-pad:hover {
+    background-color: #5a5a5a;
 }
 
 #display {
     font-size: 24px;
     font-weight: bold;
     padding: 10px;
-}
-
-footer {
-    @extend .bg-light;
-    padding: 20px;
-    margin-top: 20px;
+    color: #00ff66;
 }

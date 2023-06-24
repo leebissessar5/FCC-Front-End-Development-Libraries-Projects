@@ -79,7 +79,12 @@ const App = () => {
             .getElementById(clipId)
             .getElementsByClassName('clip')[0]
         audioElement.currentTime = 0
-        audioElement.play()
+        const promise = audioElement.play()
+        if (promise !== null) {
+            promise.catch(() => {
+                audioElement.play()
+            })
+        }
     }
 
     return (

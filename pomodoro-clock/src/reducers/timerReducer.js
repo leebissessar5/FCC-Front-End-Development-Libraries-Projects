@@ -9,7 +9,7 @@ const timerSlice = createSlice({
         breakLength: 5,
     },
     reducers: {
-        reset(_state, _action) {
+        resetTimers(_state, _action) {
             return { mins: 25, secs: 0, sessionLength: 25, breakLength: 5 }
         },
         setTimer(state, action) {
@@ -51,7 +51,7 @@ const timerSlice = createSlice({
 })
 
 export const {
-    reset,
+    resetTimers,
     setTimer,
     decrementTimer,
     incrementSession,

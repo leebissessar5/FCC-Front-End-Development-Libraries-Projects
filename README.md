@@ -13,3 +13,5 @@ Later, you'll build a shopping cart and other applications to learn how to creat
 ### #3: [Build a Drum Machine](./drum-machine/) - Deployed on [Render](https://drum-machine-9n94.onrender.com).
 
 ### #4: [Build a JavaScript Calculator](./calculator) - Deployed on [Render](https://calculator-87yl.onrender.com/).
+
+### #5: [Build a 25 + 5 Clock](./pomodoro-clock/)

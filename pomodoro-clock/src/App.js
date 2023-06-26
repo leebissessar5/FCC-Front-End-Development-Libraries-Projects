@@ -13,12 +13,15 @@ import {
 
 import LengthControl from './components/LengthControl'
 import Footer from './components/Footer'
+import beepSound from './Audio/BeepSound.wav'
 
 const App = () => {
     const [start, setStart] = useState(false)
     const [reset, setReset] = useState(true)
     const timer = useSelector((state) => state.timer)
     const dispatch = useDispatch()
+
+    const audioElement = document.getElementById('beep')
 
     useEffect(() => {
         let countdown = null
@@ -27,6 +30,16 @@ const App = () => {
             countdown = setInterval(() => {
                 dispatch(decrementTimer())
             }, 1000)
+            if (timer.mins === 0 && timer.secs === 0) {
+                // play audio
+                audioElement.currentTime = 0
+                const promise = audioElement.play()
+                if (promise !== null) {
+                    promise.catch(() => {
+                        audioElement.play()
+                    })
+                }
+            }
         } else {
             clearInterval(countdown)
         }
@@ -34,7 +47,7 @@ const App = () => {
         return () => {
             clearInterval(countdown)
         }
-    }, [start, reset, dispatch])
+    }, [start, reset, dispatch, timer, audioElement])
 
     const handleTimer = (event) => {
         event.preventDefault()
@@ -101,13 +114,14 @@ const App = () => {
 
     return (
         <div className="App">
+            <audio id="beep" src={beepSound} />
             <div className="header">25 + 5 Clock App</div>
             <div className="container">
                 <div className="timer-section">
                     <div id="timer-label" className="timer-label">
                         {getTimerLabel()}
                     </div>
-                    <div className="time-left">
+                    <div id="time-left" className="time-left">
                         {`${timer.mins}:${
                             timer.secs < 10 ? `0${timer.secs}` : timer.secs
                         }`}

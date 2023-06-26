@@ -26,7 +26,7 @@ const timerSlice = createSlice({
                 secs: action.payload.secs,
             }
         },
-        decrementTimer(state, _action) {
+        decrementTimer(state, action) {
             let { mins, secs, mode } = state
             const totalSecs = mins * 60 + secs - 1
 

@@ -1,7 +1,9 @@
 import './App.scss'
 import { useSelector, useDispatch } from 'react-redux'
+import { useState, useEffect } from 'react'
 import {
     resetTimers,
+    decrementTimer,
     incrementBreak,
     decrementBreak,
     incrementSession,
@@ -9,10 +11,43 @@ import {
 } from './reducers/timerReducer'
 
 import LengthControl from './components/LengthControl'
+import Footer from './components/Footer'
 
 const App = () => {
+    const [start, setStart] = useState(false)
+    const [reset, setReset] = useState(true)
     const timer = useSelector((state) => state.timer)
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        let countdown = null
+
+        if (start && !reset) {
+            countdown = setInterval(() => {
+                dispatch(decrementTimer())
+            }, 1000)
+        } else {
+            clearInterval(countdown)
+        }
+
+        return () => {
+            clearInterval(countdown)
+        }
+    }, [start, reset, dispatch])
+
+    const handleTimer = (event) => {
+        event.preventDefault()
+
+        setStart(!start)
+        setReset(false)
+    }
+
+    const handleReset = (event) => {
+        event.preventDefault()
+
+        setReset(true)
+        dispatch(resetTimers())
+    }
 
     return (
         <div className="App">
@@ -27,13 +62,17 @@ const App = () => {
                         }`}
                     </div>
                     <div className="button-section">
-                        <button id="start_stop" className="btn btn-primary">
-                            Start
+                        <button
+                            onClick={handleTimer}
+                            id="start_stop"
+                            className="btn btn-primary"
+                        >
+                            {!start ? (reset ? 'Start' : 'Resume') : 'Pause'}
                         </button>
                         <button
                             id="reset"
                             className="btn btn-danger"
-                            onClick={() => dispatch(resetTimers())}
+                            onClick={handleReset}
                         >
                             Reset
                         </button>
@@ -70,6 +109,7 @@ const App = () => {
                     />
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

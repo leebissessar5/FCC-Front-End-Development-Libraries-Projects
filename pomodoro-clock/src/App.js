@@ -62,6 +62,9 @@ const App = () => {
         setReset(true)
         setStart(false)
         dispatch(resetTimers())
+
+        audioElement.pause()
+        audioElement.currentTime = 0
     }
 
     const handleSessionIncrement = () => {

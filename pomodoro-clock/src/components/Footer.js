@@ -1,7 +1,7 @@
 const Footer = () => (
     <div className="footer">
         Created by Lee Bissessar
-        <p>Built using React, Bootstrap, and Sass</p>
+        <p>Built using React, Redux, Bootstrap, and Sass</p>
     </div>
 )
 

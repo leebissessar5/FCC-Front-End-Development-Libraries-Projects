@@ -4,7 +4,7 @@ In the Front End Development Libraries Certification, you'll learn how to style 
 
 Later, you'll build a shopping cart and other applications to learn how to create powerful Single Page Applications (SPAs) with React and Redux.
 
-## Certification Projects (4/5 completed)
+## Certification Projects (5/5 completed)
 
 ### #1: [Build a Random Quote Machine](./random-quote-machine) - Deployed on [Render](https://random-quote-machine-4ihq.onrender.com).
 
@@ -14,4 +14,4 @@ Later, you'll build a shopping cart and other applications to learn how to creat
 
 ### #4: [Build a JavaScript Calculator](./calculator) - Deployed on [Render](https://calculator-87yl.onrender.com/).
 
-### #5: [Build a 25 + 5 Clock](./pomodoro-clock/)
+### #5: [Build a 25 + 5 Clock](./pomodoro-clock/) - Deployed on [Render](https://pomodoro-clock-dsfz.onrender.com).

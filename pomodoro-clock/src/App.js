@@ -63,8 +63,10 @@ const App = () => {
         setStart(false)
         dispatch(resetTimers())
 
-        audioElement.pause()
-        audioElement.currentTime = 0
+        if (audioElement) {
+            audioElement.pause()
+            audioElement.currentTime = 0
+        }
     }
 
     const handleSessionIncrement = () => {
@@ -125,7 +127,7 @@ const App = () => {
                         {getTimerLabel()}
                     </div>
                     <div id="time-left" className="time-left">
-                        {`${timer.mins}:${
+                        {`${timer.mins < 10 ? `0${timer.mins}` : timer.mins}:${
                             timer.secs < 10 ? `0${timer.secs}` : timer.secs
                         }`}
                     </div>

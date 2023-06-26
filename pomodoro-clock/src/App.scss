@@ -13,10 +13,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #f8f9fa;
+    background-color: transparent;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border: 3px solid #000;
+    width: 30%;
 }
 
 .timer-section {
@@ -88,8 +90,24 @@
     border: none;
     background-color: #007bff;
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .decrement-button {
     background-color: #dc3545;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
 }

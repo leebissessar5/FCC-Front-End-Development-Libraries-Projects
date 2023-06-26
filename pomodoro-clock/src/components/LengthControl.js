@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
+
 const LengthControl = ({ label, length, onIncrement, onDecrement, ids }) => {
     const { header, body, increment, decrement } = ids
     return (
@@ -11,7 +14,7 @@ const LengthControl = ({ label, length, onIncrement, onDecrement, ids }) => {
                     id={increment}
                     onClick={onIncrement}
                 >
-                    +
+                    <FontAwesomeIcon icon={faArrowUp} />
                 </button>
                 <span className="length-value" id={body}>
                     {length}
@@ -21,7 +24,7 @@ const LengthControl = ({ label, length, onIncrement, onDecrement, ids }) => {
                     id={decrement}
                     onClick={onDecrement}
                 >
-                    -
+                    <FontAwesomeIcon icon={faArrowDown} />
                 </button>
             </div>
         </div>

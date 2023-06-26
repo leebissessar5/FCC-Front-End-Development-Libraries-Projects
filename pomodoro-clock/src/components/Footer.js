@@ -1,6 +1,6 @@
 const Footer = () => (
     <div className="footer">
-        25 + 5 Clock App created by ???
+        Created by Lee Bissessar
         <p>Built using React, Bootstrap, and Sass</p>
     </div>
 )

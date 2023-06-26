@@ -7,21 +7,44 @@ const timerSlice = createSlice({
         secs: 0,
         sessionLength: 25,
         breakLength: 5,
+        mode: 'SESSION',
     },
     reducers: {
         resetTimers(_state, _action) {
-            return { mins: 25, secs: 0, sessionLength: 25, breakLength: 5 }
+            return {
+                mins: 25,
+                secs: 0,
+                sessionLength: 25,
+                breakLength: 5,
+                mode: 'SESSION',
+            }
         },
         setTimer(state, action) {
-            return { ...state, mins: action.mins, secs: action.secs }
-        },
-        decrementTimer(state, _action) {
-            const secs = state.secs + state.mins * 60 - 1
             return {
                 ...state,
-                mins: Math.floor(secs / 60),
-                secs: secs % 60,
+                mins: action.payload.mins,
+                secs: action.payload.secs,
             }
+        },
+        decrementTimer(state, _action) {
+            let { mins, secs, mode } = state
+            const totalSecs = mins * 60 + secs - 1
+
+            if (totalSecs < 0) {
+                if (mode === 'SESSION') {
+                    mins = state.breakLength
+                    mode = 'BREAK'
+                } else {
+                    mins = state.sessionLength
+                    mode = 'SESSION'
+                }
+                secs = 0
+            } else {
+                mins = Math.floor(totalSecs / 60)
+                secs = totalSecs % 60
+            }
+
+            return { ...state, mins, secs, mode }
         },
         incrementSession(state, _action) {
             if (state.sessionLength < 60) {

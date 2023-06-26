@@ -2,6 +2,7 @@ import './App.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import {
+    setTimer,
     resetTimers,
     decrementTimer,
     incrementBreak,
@@ -46,15 +47,65 @@ const App = () => {
         event.preventDefault()
 
         setReset(true)
+        setStart(false)
         dispatch(resetTimers())
+    }
+
+    const handleSessionIncrement = () => {
+        if (!start) {
+            if (timer.mode === 'SESSION') {
+                dispatch(incrementSession())
+                dispatch(setTimer({ mins: timer.sessionLength + 1, secs: 0 }))
+            } else {
+                dispatch(incrementSession())
+            }
+        }
+    }
+
+    const handleSessionDecrement = () => {
+        if (!start && timer.sessionLength > 1) {
+            if (timer.mode === 'SESSION') {
+                dispatch(decrementSession())
+                dispatch(setTimer({ mins: timer.sessionLength - 1, secs: 0 }))
+            } else {
+                dispatch(decrementSession())
+            }
+        }
+    }
+
+    const handleBreakIncrement = () => {
+        if (!start) {
+            if (timer.mode === 'BREAK') {
+                dispatch(incrementBreak())
+                dispatch(setTimer({ mins: timer.breakLength + 1, secs: 0 }))
+            } else {
+                dispatch(incrementBreak())
+            }
+        }
+    }
+
+    const handleBreakDecrement = () => {
+        if (!start && timer.breakLength > 1) {
+            if (timer.mode === 'BREAK') {
+                dispatch(decrementBreak())
+                dispatch(setTimer({ mins: timer.breakLength - 1, secs: 0 }))
+            } else {
+                dispatch(decrementBreak())
+            }
+        }
+    }
+
+    const getTimerLabel = () => {
+        return timer.mode === 'SESSION' ? 'Session' : 'Break'
     }
 
     return (
         <div className="App">
+            <div className="header">25 + 5 Clock App</div>
             <div className="container">
                 <div className="timer-section">
                     <div id="timer-label" className="timer-label">
-                        Session
+                        {getTimerLabel()}
                     </div>
                     <div className="time-left">
                         {`${timer.mins}:${
@@ -79,14 +130,13 @@ const App = () => {
                     </div>
                 </div>
             </div>
-
             <div className="length-control-box">
                 <div className="length-control-container">
                     <LengthControl
                         label="Break Length"
                         length={timer.breakLength}
-                        onIncrement={() => dispatch(incrementBreak())}
-                        onDecrement={() => dispatch(decrementBreak())}
+                        onIncrement={handleBreakIncrement}
+                        onDecrement={handleBreakDecrement}
                         ids={{
                             header: 'break-label',
                             body: 'break-length',
@@ -98,8 +148,8 @@ const App = () => {
                     <LengthControl
                         label="Session Length"
                         length={timer.sessionLength}
-                        onIncrement={() => dispatch(incrementSession())}
-                        onDecrement={() => dispatch(decrementSession())}
+                        onIncrement={handleSessionIncrement}
+                        onDecrement={handleSessionDecrement}
                         ids={{
                             header: 'session-label',
                             body: 'session-length',
